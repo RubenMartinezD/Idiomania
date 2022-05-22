@@ -50,7 +50,7 @@ class Model {
             }
         */
         $.ajax({
-            data: { "id_frase": id_frase },
+            data: { "id_frase": 5 },
             url: 'php/traducirFrase.php',
             type: 'get',
             success: function(response) {
