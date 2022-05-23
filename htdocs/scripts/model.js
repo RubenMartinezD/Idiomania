@@ -49,16 +49,26 @@ class Model {
 
             }
         */
+        /** 
+         $.ajax({
+             data: { "id_frase": 5 },
+             url: 'php/traducirFrase.php',
+             type: 'get',
+             success: function(response) {
+                 var respuesta = JSON.parse(response);
+                 console.log(respuesta);
+             }
+         });
+ 
+ */
         $.ajax({
-            data: { "id_frase": 5 },
-            url: 'php/traducirFrase.php',
+            data: { auth_key: "a57a350c-3be2-fa4f-3318-a5e5e8adf8c8:fx", text: "Adios mundo", target_lang: "DE" },
+            url: 'http://api-free.deepl.com',
             type: 'get',
             success: function(response) {
                 var respuesta = JSON.parse(response);
-                console.log(respuesta);
+                console.log(respuesta)
             }
         });
-
-
     }
 }
