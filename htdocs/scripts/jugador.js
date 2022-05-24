@@ -10,21 +10,35 @@ class Player extends cuenta_atras {
      * @param {string} nombre - nombre del jugador
      * @param 
      */
-    constructor(tiempo_restante, puntos, turno, nombre) {
-        this.marca = marca
-            // inicializamos la velocidad a cero
-        this.velocity = 0
+    constructor(tiempo_restante, nombre) {
+        super(tiempo_restante);
+        this.puntos = 0
+        this.turno = 0
+        this.nombre = nombre
+
     }
 
-    // obtenemos la velocidad
-    getVelocity() {
-        return this.velocity
+    // obtenemos el tiempo restante
+    getTiempoRestante() {
+        return this.tiempo_restante
     }
 
-    // obtenemos el modelo
-    getMarca() {
-        return this.marca
+    // obtenemos los puntos
+    getPuntos() {
+        return this.puntos
     }
+
+
+    // obtenemos el turno
+    getPuntos() {
+        return this.turno
+    }
+
+    // obtenemos el nombre proporcionado
+    getNombre() {
+        return this.nombre
+    }
+
 
     // aumentamos la velocidad en un valor
     acelerar(valor) {
