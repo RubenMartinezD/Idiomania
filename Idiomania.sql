@@ -1,5 +1,6 @@
-DROP TABLE frases;
-DROP TABLE puntuaciones;
+DROP TABLE IF EXISTS frases;
+DROP TABLE IF EXISTS puntuaciones;
+DROP TABLE IF EXISTS idiomas;
 CREATE TABLE IF NOT EXISTS frases (
 id_frase INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 contenido VARCHAR(200) NOT NULL
@@ -8,6 +9,11 @@ CREATE TABLE IF NOT EXISTS puntuaciones (
 id_partida INT AUTO_INCREMENT PRIMARY KEY,
 nombre_usuario VARCHAR(20),
 puntuacion_final INT
+);
+CREATE TABLE IF NOT EXISTS idiomas (
+id_idioma INT AUTO_INCREMENT PRIMARY KEY,
+codigo_idioma VARCHAR(2) NOT NULL,
+nombre_idioma VARCHAR(30) NOT NULL
 );
 INSERT INTO puntuaciones (
 nombre_usuario,
@@ -137,3 +143,9 @@ VALUES
     ("In hopes of finding out the truth, he entered the one-room library."),
     ("Harrold felt confident that nobody would ever suspect his spy pigeon."),
     ("The wake behind the boat told of the past while the open sea for told life in the unknown future.");
+INSERT INTO idiomas (
+codigo_idioma,
+nombre_idioma
+)
+VALUES
+    ("DE", "Alemán"),("BG", "Búlgaro"),("CS", "Checo"),("DA", "Danés"),("SK", "Eslovaco"),("SL", "Esloveno"),("ES", "Español"),("ET", "Estonio"),("FI", "Finés"),("FR", "Francés"),("EL", "Griego"),("HU", "Húngaro"),("ID", "Indonesio"),("EN", "Inglés"),("IT", "Italiano"),("JA", "Japonés"),("LV", "Letón"),("LT", "Lituano"),("NL", "Neerlandés"),("PL", "Polaco"),("PT", "Portugués"),("RO", "Rumano"),("RU", "Ruso"),("SV", "Sueco"),("TR", "Turco");
