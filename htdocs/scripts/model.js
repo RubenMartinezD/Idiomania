@@ -23,52 +23,24 @@ class Model {
     }
 
     traducirFrase() {
-        /** 
-                const projectId = 'future-sunrise-350010';
+        async function traduccion() {
 
-                // Imports the Google Cloud client library
-                const { Translate } = require('@google-cloud/translate').v2;
-
-                // Instantiates a client
-                const translate = new Translate({ projectId });
-
-                async function quickStart() {
-                    // The text to translate
-                    const text = 'Hello, world!';
-
-                    // The target language
-                    const target = 'ru';
-
-                    // Translates some text into Russian
-                    const [translation] = await translate.translate(text, target);
-                    console.log(`Text: ${text}`);
-                    console.log(`Translation: ${translation}`);
-                }
-
-                quickStart();
-
-            }
-        */
-        /** 
-         $.ajax({
-             data: { "id_frase": 5 },
-             url: 'php/traducirFrase.php',
-             type: 'get',
-             success: function(response) {
-                 var respuesta = JSON.parse(response);
-                 console.log(respuesta);
-             }
-         });
- 
- */
-        $.ajax({
-            data: { auth_key: "a57a350c-3be2-fa4f-3318-a5e5e8adf8c8:fx", text: "Adios mundo", target_lang: "DE" },
-            url: 'http://api-free.deepl.com',
-            type: 'post',
-            success: function(response) {
-                var respuesta = JSON.parse(response);
-                console.log(respuesta)
-            }
-        });
+            const response = await axios
+                .get("https://api-free.deepl.com/v2/translate", {
+                    params: {
+                        auth_key: "a57a350c-3be2-fa4f-3318-a5e5e8adf8c8:fx",
+                        text: "Adios mundo",
+                        target_lang: "DE"
+                    },
+                    proxy: {
+                        host: "localhost",
+                        port: 8080
+                    }
+                });
+            return response;
+        }
+        traduccion().then(function(resultado) {
+            console.log(JSON.parse(resultado.request.response).translations[0].text);
+        })
     }
 }
