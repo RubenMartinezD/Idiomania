@@ -1,7 +1,7 @@
 /**
  * Clase para construir el objeto jugador
  */
-class Player extends cuenta_atras {
+class Player extends cuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
@@ -30,7 +30,7 @@ class Player extends cuenta_atras {
 
 
     // obtenemos el turno
-    getPuntos() {
+    getTurnos() {
         return this.turno
     }
 

@@ -1,5 +1,7 @@
 class Model {
-    constructor() {}
+    constructor() {
+            new cuentaAtras();
+        }
         /**
          * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
          * @returns boolean true
@@ -21,5 +23,8 @@ class Model {
         });
         return true;
     }
+    nuevaCuenta() {
 
+        this.cuentita.comenzarCuenta()
+    }
 }
