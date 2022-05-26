@@ -1,6 +1,6 @@
 class Model {
     constructor() {
-            new cuentaAtras();
+            cuentita = new cuentaAtras();
         }
         /**
          * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
@@ -24,7 +24,6 @@ class Model {
         return true;
     }
     nuevaCuenta() {
-
         this.cuentita.comenzarCuenta()
     }
 }
