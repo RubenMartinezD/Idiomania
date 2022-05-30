@@ -1,6 +1,8 @@
 /**
  * Clase para construir el objeto jugador
  */
+
+
 class Player extends cuentaAtras {
     /**
      * Constructor de la clase
