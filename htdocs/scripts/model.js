@@ -4,7 +4,7 @@ class Model {
     }
 
     nuevaCuenta() {
-        this.cuentita.comenzarCuenta()
+        this.cuentita.contandoAtras()
     }
 
     /**
