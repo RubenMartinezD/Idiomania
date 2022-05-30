@@ -149,3 +149,4 @@ nombre_idioma
 )
 VALUES
     ("DE", "Alemán"),("BG", "Búlgaro"),("CS", "Checo"),("DA", "Danés"),("SK", "Eslovaco"),("SL", "Esloveno"),("ES", "Español"),("ET", "Estonio"),("FI", "Finés"),("FR", "Francés"),("EL", "Griego"),("HU", "Húngaro"),("ID", "Indonesio"),("EN", "Inglés"),("IT", "Italiano"),("JA", "Japonés"),("LV", "Letón"),("LT", "Lituano"),("NL", "Neerlandés"),("PL", "Polaco"),("PT", "Portugués"),("RO", "Rumano"),("RU", "Ruso"),("SV", "Sueco"),("TR", "Turco");
+
