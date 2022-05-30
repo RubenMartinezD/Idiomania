@@ -1,36 +1,37 @@
 class Model {
     constructor() {
-            cuentita = new cuentaAtras();
-        }
-        /**
-         * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
-         * @returns boolean true
-         */
-    obtenerFrase() {
-        var id_frase = Math.floor(Math.random() * 120) + 1;
-        $.ajax({
-            data: { "id_frase": id_frase },
-            url: 'php/obtenerFrase.php',
-            type: 'get',
-            success: function(response) {
-                var respuesta = JSON.parse(response);
-                for (var i = 0; i < respuesta.length; i++) {
-                    $("#respuesta").html("id_frase: " + respuesta[i].id_frase + " Contenido: " +
-                        respuesta[i].contenido);
-                    console.log(respuesta);
-                }
-            }
-        });
-        return true;
+        this.cuentita = new CuentaAtras()
     }
+
     nuevaCuenta() {
         this.cuentita.comenzarCuenta()
     }
 
     /**
-     * Método para obtener un idioma al azar de la base de datos y mostrarla por pantalla
+     * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
      * @returns boolean true
      */
+    obtenerFrase() {
+            var id_frase = Math.floor(Math.random() * 120) + 1;
+            $.ajax({
+                data: { "id_frase": id_frase },
+                url: 'php/obtenerFrase.php',
+                type: 'get',
+                success: function(response) {
+                    var respuesta = JSON.parse(response);
+                    for (var i = 0; i < respuesta.length; i++) {
+                        $("#respuesta").html("id_frase: " + respuesta[i].id_frase + " Contenido: " +
+                            respuesta[i].contenido);
+                        console.log(respuesta);
+                    }
+                }
+            });
+            return true;
+        }
+        /**
+         * Método para obtener un idioma al azar de la base de datos y mostrarla por pantalla
+         * @returns boolean true
+         */
     obtenerIdioma() {
             /**
              * Obtener un idioma al azar de los 25 que hay en la base de datos correspondientes a la API
@@ -103,7 +104,5 @@ class Model {
         this.traducirFrase()
     }
 
-    nuevaCuenta() {
-        this.cuentita.comenzarCuenta()
-    }
+
 }

@@ -1,8 +1,9 @@
 /**
  * objeto cuenta atrás
  */
-class cuentaAtras {
-    constructor() {
+class CuentaAtras {
+    constructor(model) {
+            this.model = model
             this.milisegundos = 1000
             this.segundos = 60
         }

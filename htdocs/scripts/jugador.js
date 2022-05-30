@@ -1,7 +1,7 @@
 /**
  * Clase para construir el objeto jugador
  */
-class Player extends cuentaAtras {
+class Player extends CuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
@@ -37,16 +37,5 @@ class Player extends cuentaAtras {
     // obtenemos el nombre proporcionado
     getNombre() {
         return this.nombre
-    }
-
-
-    // aumentamos la velocidad en un valor
-    acelerar(valor) {
-        this.velocity = this.velocity + valor
-    }
-
-    // disminuimos la velocidad en un valor
-    frenar(valor) {
-        this.velocity = this.velocity - valor
     }
 }
