@@ -22,6 +22,7 @@ class Model {
                 data: { "id_frase": id_frase },
                 url: 'php/obtenerFrase.php',
                 type: 'get',
+                async: false,
                 success: function(response) {
                     var respuesta = JSON.parse(response);
                     for (var i = 0; i < respuesta.length; i++) {
@@ -29,7 +30,7 @@ class Model {
                             respuesta[i].contenido);
                         console.log(respuesta);
                     }
-                    return respuesta[i].contenido;
+                    return true;
                 }
             });
 
@@ -56,6 +57,7 @@ class Model {
                 for (var i = 0; i < idioma.length; i++) {
                     $("#idioma_traducido").html(idioma[i].nombre_idioma)
                     $("#codigo_idioma_correcto").html(idioma[i].codigo_idioma)
+                    $("#id_idioma_correcto").html(idioma[i].id_idioma)
                 }
                 console.log(idioma);
                 return true;
@@ -64,21 +66,14 @@ class Model {
 
     }
 
-    obtenerTodosIdiomas() {
-            $.ajax({
-                url: 'php/obtenerTodosIdiomas.php',
-                type: 'get',
-                async: false,
-                success: function(response) {
-                    var array_idioma = JSON.parse(response);
-                    for (var i = 0; i < array_idioma.length; i++) {
-                        $("#array_idioma").html(array_idioma[i])
-                    }
-                    console.log(array_idioma);
-                    return array_idioma;
-                }
-            });
-
+    recogerMasIdiomas() {
+            var idioma_prohibido = document.getElementById("id_idioma_correcto")
+            var idioma_extra = []
+            for (i = 1; i < 4; i++) {
+                idioma_extra[i] = Math.floor(Math.random() * 25) + 1;
+                do { idioma_extra[i] = Math.floor(Math.random() * 25) + 1; }
+                while (idioma_extra[i] == idioma_prohibido)
+            }
         }
         /**
          * Método que extrae el idioma y la frase incrustados en el html y se dispone a traducir la frase y mostrarla por pantalla
@@ -121,12 +116,11 @@ class Model {
         /**
          * Función que actúa como un pack 3 en 1 para entregar una frase en un idioma al azar
          */
-    async randomizarFrase() {
-        await this.obtenerFrase()
-        await this.obtenerIdioma()
-        await this.traducirFrase()
+    randomizarFrase() {
+        this.obtenerFrase()
+        this.obtenerIdioma()
+        this.traducirFrase()
         this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
-        document.getElementById()
     }
 
     iniciarJuego() {
