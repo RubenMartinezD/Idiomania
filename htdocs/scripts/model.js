@@ -1,11 +1,16 @@
 class Model {
     constructor() {
         this.cuentita = new CuentaAtras()
+        this.jugador = new Player()
+        this.respuesta_correcta = 0
     }
 
-    nuevaCuenta() {
-        this.cuentita.contandoAtras()
+    nuevoJugador() {
+        this.jugador.contandoAtras()
     }
+
+
+
 
     /**
      * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
@@ -52,7 +57,7 @@ class Model {
                         $("#codigo_idioma_correcto").html(idioma[i].codigo_idioma)
                     }
                     console.log(idioma);
-                    return true;
+                    return idioma[i].codigo_idioma;
                 }
             });
 
@@ -102,6 +107,15 @@ class Model {
         this.obtenerFrase()
         this.obtenerIdioma()
         this.traducirFrase()
+        this.respuesta_correcta = Math.floor(Math.random() * 4) + 1;
+    }
+
+    iniciarJuego() {
+        var nomheroe = comprobarNombre();
+        heroe = new Heroe(nomheroe, 2, 20, 5, 2, 40, 25)
+        $("#NOMH").html(heroe.getnombre)
+        $("#NOME").html(enemigo.getnombre)
+        sessionStorage.setItem("NOMH", nomheroe)
     }
 
 
