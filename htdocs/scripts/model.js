@@ -1,32 +1,37 @@
 class Model {
-    constructor() {}
-        /**
-         * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
-         * @returns boolean true
-         */
+    constructor() {
+        this.cuentita = new CuentaAtras()
+        this.jugador = new Player()
+        this.respuesta_correcta = 0
+    }
+
+    nuevoJugador() {
+        this.jugador.contandoAtras()
+    }
+
+
+
+
+    /**
+     * Método para obtener una frase al azar de la base de datos y mostrarla por pantalla
+     * @returns boolean true
+     */
     obtenerFrase() {
-            /**
-             * Escoger un número al azar entre 1 y 120 para extraer la frase correspondiente de la base de datos
-             */
             var id_frase = Math.floor(Math.random() * 120) + 1;
-            /**
-             * Extraer con ajax la frase correspondiente e imprimirla en la etiqueta html oculta id_frase
-             */
             $.ajax({
                 data: { "id_frase": id_frase },
                 url: 'php/obtenerFrase.php',
                 type: 'get',
-                async: false,
                 success: function(response) {
-                    var frase = JSON.parse(response);
-                    for (var i = 0; i < frase.length; i++) {
-                        $("#frase").html(frase[i].contenido)
+                    var respuesta = JSON.parse(response);
+                    for (var i = 0; i < respuesta.length; i++) {
+                        $("#respuesta").html("id_frase: " + respuesta[i].id_frase + " Contenido: " +
+                            respuesta[i].contenido);
+                        console.log(respuesta);
                     }
-                    console.log(frase);
-                    return true;
                 }
             });
-
+            return true;
         }
         /**
          * Método para obtener un idioma al azar de la base de datos y mostrarla por pantalla
@@ -52,7 +57,7 @@ class Model {
                         $("#codigo_idioma_correcto").html(idioma[i].codigo_idioma)
                     }
                     console.log(idioma);
-                    return true;
+                    return idioma[i].codigo_idioma;
                 }
             });
 
@@ -102,5 +107,16 @@ class Model {
         this.obtenerFrase()
         this.obtenerIdioma()
         this.traducirFrase()
+        this.respuesta_correcta = Math.floor(Math.random() * 4) + 1;
     }
+
+    iniciarJuego() {
+        var nomheroe = comprobarNombre();
+        heroe = new Heroe(nomheroe, 2, 20, 5, 2, 40, 25)
+        $("#NOMH").html(heroe.getnombre)
+        $("#NOME").html(enemigo.getnombre)
+        sessionStorage.setItem("NOMH", nomheroe)
+    }
+
+
 }
