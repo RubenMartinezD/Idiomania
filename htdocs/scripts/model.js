@@ -68,13 +68,17 @@ class Model {
     }
 
     recogerMasIdiomas() {
-            var idioma_prohibido = document.getElementById("id_idioma_correcto")
-            var idioma_extra = []
-            for (i = 1; i < 4; i++) {
+            var idioma_preprohibido = document.getElementById("id_idioma_correcto");
+            var idioma_prohibido = idioma_preprohibido.textContent;
+            console.log("Idioma recogido:" + idioma_prohibido);
+            var idioma_extra = [];
+            for (let i = 1; i < 4; i++) {
                 idioma_extra[i] = Math.floor(Math.random() * 25) + 1;
                 do { idioma_extra[i] = Math.floor(Math.random() * 25) + 1; }
                 while (idioma_extra[i] == idioma_prohibido)
+                console.log("Idioma extra" + i + ":" + idioma_extra[i])
             }
+
         }
         /**
          * Método que extrae el idioma y la frase incrustados en el html y se dispone a traducir la frase y mostrarla por pantalla
