@@ -26,11 +26,12 @@ class Model {
                 success: function(response) {
                     var respuesta = JSON.parse(response);
                     for (var i = 0; i < respuesta.length; i++) {
-                        $("#respuesta").html("id_frase: " + respuesta[i].id_frase + " Contenido: " +
+                        $("#frase").html("id_frase: " + respuesta[i].id_frase + " Contenido: " +
                             respuesta[i].contenido);
                         console.log(respuesta);
+                        return true;
                     }
-                    return true;
+
                 }
             });
 
@@ -121,14 +122,6 @@ class Model {
         this.obtenerIdioma()
         this.traducirFrase()
         this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
-    }
-
-    iniciarJuego() {
-        var nomheroe = comprobarNombre();
-        heroe = new Heroe(nomheroe, 2, 20, 5, 2, 40, 25)
-        $("#NOMH").html(heroe.getnombre)
-        $("#NOME").html(enemigo.getnombre)
-        sessionStorage.setItem("NOMH", nomheroe)
     }
 
 
