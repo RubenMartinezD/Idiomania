@@ -2,7 +2,7 @@ class Model {
     constructor() {
         this.cuentita = new CuentaAtras()
         this.jugador = new Player()
-        this.respuesta_correcta = 0
+        this.lugar_respuesta_correcta = 0
     }
 
     nuevoJugador() {
@@ -29,35 +29,53 @@ class Model {
                             respuesta[i].contenido);
                         console.log(respuesta);
                     }
+                    return respuesta[i].contenido;
                 }
             });
-            return true;
+
         }
         /**
          * Método para obtener un idioma al azar de la base de datos y mostrarla por pantalla
          * @returns boolean true
          */
     obtenerIdioma() {
-            /**
-             * Obtener un idioma al azar de los 25 que hay en la base de datos correspondientes a la API
-             */
-            var id_idioma = Math.floor(Math.random() * 25) + 1;
-            /**
-             * Extraer con ajax la frase correspondiente e imprimirla en las etiquetas html ocultas idioma_traducido y codigo_idioma_correcto
-             */
+        /**
+         * Obtener un idioma al azar de los 25 que hay en la base de datos correspondientes a la API
+         */
+        var id_idioma = Math.floor(Math.random() * 25) + 1;
+        /**
+         * Extraer con ajax la frase correspondiente e imprimirla en las etiquetas html ocultas idioma_traducido y codigo_idioma_correcto
+         */
+        $.ajax({
+            data: { "id_idioma": id_idioma },
+            url: 'php/obtenerIdioma.php',
+            type: 'get',
+            async: false,
+            success: function(response) {
+                var idioma = JSON.parse(response);
+                for (var i = 0; i < idioma.length; i++) {
+                    $("#idioma_traducido").html(idioma[i].nombre_idioma)
+                    $("#codigo_idioma_correcto").html(idioma[i].codigo_idioma)
+                }
+                console.log(idioma);
+                return true;
+            }
+        });
+
+    }
+
+    obtenerTodosIdiomas() {
             $.ajax({
-                data: { "id_idioma": id_idioma },
-                url: 'php/obtenerIdioma.php',
+                url: 'php/obtenerTodosIdiomas.php',
                 type: 'get',
                 async: false,
                 success: function(response) {
-                    var idioma = JSON.parse(response);
-                    for (var i = 0; i < idioma.length; i++) {
-                        $("#idioma_traducido").html(idioma[i].nombre_idioma)
-                        $("#codigo_idioma_correcto").html(idioma[i].codigo_idioma)
+                    var array_idioma = JSON.parse(response);
+                    for (var i = 0; i < array_idioma.length; i++) {
+                        $("#array_idioma").html(array_idioma[i])
                     }
-                    console.log(idioma);
-                    return idioma[i].codigo_idioma;
+                    console.log(array_idioma);
+                    return array_idioma;
                 }
             });
 
@@ -103,11 +121,12 @@ class Model {
         /**
          * Función que actúa como un pack 3 en 1 para entregar una frase en un idioma al azar
          */
-    randomizarFrase() {
-        this.obtenerFrase()
-        this.obtenerIdioma()
-        this.traducirFrase()
-        this.respuesta_correcta = Math.floor(Math.random() * 4) + 1;
+    async randomizarFrase() {
+        await this.obtenerFrase()
+        await this.obtenerIdioma()
+        await this.traducirFrase()
+        this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
+        document.getElementById()
     }
 
     iniciarJuego() {
