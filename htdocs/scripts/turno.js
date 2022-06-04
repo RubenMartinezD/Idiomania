@@ -13,6 +13,9 @@ class Turno {
         this.respuesta_incorrecta1 = 0
         this.respuesta_incorrecta2 = 0
         this.respuesta_incorrecta3 = 0
+        this.nombre_incorrecto1 = ""
+        this.nombre_incorrecto2 = ""
+        this.nombre_incorrecto3 = ""
             /**
              * Botones del html
              */
@@ -84,5 +87,22 @@ class Turno {
     getRespuestaIncorrecta3() {
         return this.respuesta_incorrecta3
     }
-
+    setIdiomaIncorrecto1(nombre_incorrecto1) {
+        this.nombre_incorrecto1 = nombre_incorrecto1
+    }
+    setIdiomaIncorrecto2(nombre_incorrecto2) {
+        this.nombre_incorrecto2 = nombre_incorrecto2
+    }
+    setIdiomaIncorrecto3(nombre_incorrecto3) {
+        this.nombre_incorrecto3 = nombre_incorrecto3
+    }
+    getIdiomaIncorrecto1() {
+        return this.nombre_incorrecto1
+    }
+    getIdiomaIncorrecto2() {
+        return this.nombre_incorrecto2
+    }
+    getIdiomaIncorrecto3() {
+        return this.nombre_incorrecto3
+    }
 }
