@@ -288,7 +288,7 @@ class Model {
         this.colocarBotones()
     }
     respuestaJugador(event) {
-        if (event.target.value == 'C') { console.log("Acertaste wey") } else if (event.target.value == 'I') { console.log("Fallaste pendejo") }
+        if (event.target.value == 'C') { console.log("Acertaste") } else if (event.target.value == 'I') { console.log("Fallaste") }
     }
 
 }
