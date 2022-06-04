@@ -69,7 +69,7 @@ class Model {
                  */
                 respuesta_idioma = JSON.parse(response);
                 //    for (var i = 0; i < respuesta_idioma.length; i++) {
-                $("#idioma_traducido").html(respuesta_idioma[0].nombre_idioma)
+                // $("#idioma_traducido").html(respuesta_idioma[0].nombre_idioma)
 
                 //$("#codigo_idioma_correcto").html(respuesta_idioma[i].codigo_idioma)
 
@@ -93,7 +93,7 @@ class Model {
      */
     obtenerIdiomasIncorrectos(id_idioma, numero_slot) {
         // Extraer con ajax el id de idioma correspondiente
-        var respuesta = ''
+        var idioma = ''
         $.ajax({
             data: { "id_idioma": id_idioma },
             url: 'php/obtenerIdioma.php',
@@ -104,12 +104,12 @@ class Model {
                  * El JSON que contendrá los datos del idioma
                  */
                 var idioma = JSON.parse(response);
-                for (let i = 0; i < idioma.length; i++) {
-                    $("#nombre_idiomaextra" + numero_slot).html(idioma[i].nombre_idioma)
-                    respuesta = idioma[i].nombre_idioma
-                }
-                console.log(idioma);
-                return respuesta;
+                // for (let i = 0; i < idioma.length; i++) {
+                //    $("#nombre_idiomaextra" + numero_slot).html(idioma[i].nombre_idioma)
+                //   respuesta = idioma[i].nombre_idioma
+                // }
+                //console.log(idioma);
+                //return respuesta;
             }
         });
 

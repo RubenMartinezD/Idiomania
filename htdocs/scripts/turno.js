@@ -4,7 +4,7 @@ class Turno {
         this.n_idioma_correcto = ""
         this.c_idioma_correcto = ""
         this.id_idioma_correcto = ""
-        this.idiomas_incorrectos = ""
+        this.array_idiomas_incorrectos = []
         this.frase_traducida = ""
             /**
              * Definición del slot del botón donde estará la respuesta correcta
@@ -20,6 +20,10 @@ class Turno {
         this.boton2 = document.getElementById("Boton 2");
         this.boton3 = document.getElementById("Boton 3");
         this.boton4 = document.getElementById("Boton 4");
+        this.boton1.addEventListener("click", (event) => juego.model.respuestaJugador(event))
+        this.boton2.addEventListener("click", (event) => juego.model.respuestaJugador(event))
+        this.boton3.addEventListener("click", (event) => juego.model.respuestaJugador(event))
+        this.boton4.addEventListener("click", (event) => juego.model.respuestaJugador(event))
 
     }
 
@@ -59,13 +63,18 @@ class Turno {
 
     //Funciones de recogerMasIdiomas()
     setIdiomasIncorrectos(idiomas_incorrectos) {
-        this.idiomas_incorrectos = idiomas_incorrectos
+        this.array_idiomas_incorrectos = idiomas_incorrectos
     }
+    getIdiomasIncorrectos(i) {
+        return this.array_idiomas_incorrectos[i]
+    }
+
 
     //Funciones de colocarBotones()
     getLugarRespuestaCorrecta() {
-        return this.lugar_respuesta_correcta
-    }
+            return this.lugar_respuesta_correcta
+        }
+        //Funciones para los lugares con las respuetas incorrectas
     setRespuestaIncorrecta1(respuesta_incorrecta1) {
         this.respuesta_incorrecta1 = respuesta_incorrecta1
     }
