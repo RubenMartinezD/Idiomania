@@ -69,7 +69,7 @@ class Model {
                  */
                 respuesta_idioma = JSON.parse(response);
                 //    for (var i = 0; i < respuesta_idioma.length; i++) {
-                //$("#idioma_traducido").html(respuesta_idioma[0].nombre_idioma)
+                // $("#idioma_traducido").html(respuesta_idioma[0].nombre_idioma)
 
                 //$("#codigo_idioma_correcto").html(respuesta_idioma[i].codigo_idioma)
 
@@ -92,40 +92,39 @@ class Model {
      * @param {integer} numero_slot - El número del slot que ocupará en el html el almacenaje de la variable
      */
     obtenerIdiomasIncorrectos(id_idioma, numero_slot) {
-        // Extraer con ajax el id de idioma correspondiente
-        var respuesta = ''
-        $.ajax({
-            data: { "id_idioma": id_idioma },
-            url: 'php/obtenerIdioma.php',
-            type: 'get',
-            async: false,
-            success: function(response) {
-                /**
-                 * El JSON que contendrá los datos del idioma
-                 */
-                var idioma = JSON.parse(response);
-                respuesta = idioma[0].nombre_idioma
+            // Extraer con ajax el id de idioma correspondiente
+            var respuesta = ''
+            $.ajax({
+                data: { "id_idioma": id_idioma },
+                url: 'php/obtenerIdioma.php',
+                type: 'get',
+                async: false,
+                success: function(response) {
+                    /**
+                     * El JSON que contendrá los datos del idioma
+                     */
+                    var idioma = JSON.parse(response);
+                    respuesta = idioma[0].nombre_idioma
 
+                }
+            });
+            switch (numero_slot) {
+                case 0:
+                    this.turno.setIdiomaIncorrecto1(respuesta)
+                    break
+                case 1:
+                    this.turno.setIdiomaIncorrecto2(respuesta)
+                    break
+                case 2:
+                    this.turno.setIdiomaIncorrecto3(respuesta)
+                    break
             }
-        });
-        switch (numero_slot) {
-            case 0:
-                this.turno.setIdiomaIncorrecto1(respuesta)
-                break
-            case 1:
-                this.turno.setIdiomaIncorrecto2(respuesta)
-                break
-            case 2:
-                this.turno.setIdiomaIncorrecto3(respuesta)
-                break
+            // console.log(idioma);
+            // return respuesta;
         }
-        // console.log(idioma);
-        // return respuesta;
-    }
-
-    /**
-     * Método para obtener los ID de tres idiomas distintos del primero
-     */
+        /**
+         * Método para obtener los ID de tres idiomas distintos del primero
+         */
     recogerMasIdiomas() {
             /** 
              * Contiene el ID del idioma correcto, el cual no debe repetirse.
@@ -288,6 +287,8 @@ class Model {
         this.recogerMasIdiomas()
         this.colocarBotones()
     }
-
+    respuestaJugador(event) {
+        if (event.target.value == 'C') { console.log("Acertaste wey") } else if (event.target.value == 'I') { console.log("Fallaste pendejo") }
+    }
 
 }
