@@ -104,15 +104,23 @@ class Model {
                  * El JSON que contendrá los datos del idioma
                  */
                 var idioma = JSON.parse(response);
-                // for (let i = 0; i < idioma.length; i++) {
-                //    $("#nombre_idiomaextra" + numero_slot).html(idioma[i].nombre_idioma)
-                //   respuesta = idioma[i].nombre_idioma
-                // }
-                //console.log(idioma);
-                //return respuesta;
+                respuesta = idioma[0].nombre_idioma
+
             }
         });
-
+        switch (numero_slot) {
+            case 0:
+                this.turno.setIdiomaIncorrecto1(respuesta)
+                break
+            case 1:
+                this.turno.setIdiomaIncorrecto2(respuesta)
+                break
+            case 2:
+                this.turno.setIdiomaIncorrecto3(respuesta)
+                break
+        }
+        // console.log(idioma);
+        // return respuesta;
     }
 
     /**
@@ -133,7 +141,6 @@ class Model {
                 while (array_idiomas_incorrectos[i] == idioma_prohibido)
                 this.obtenerIdiomasIncorrectos(array_idiomas_incorrectos[i], i)
             }
-            this.turno.setIdiomasIncorrectos(array_idiomas_incorrectos)
             return array_idiomas_incorrectos
         }
         /**
@@ -187,9 +194,9 @@ class Model {
         /**
          * Localizaciones del html donde se guardan las variables con los idiomas incorrectos
          */
-        var idiomaextra0 = document.getElementById("nombre_idiomaextra0").textContent;
-        var idiomaextra1 = document.getElementById("nombre_idiomaextra1").textContent;
-        var idiomaextra2 = document.getElementById("nombre_idiomaextra2").textContent;
+        var idiomaextra0 = this.turno.getIdiomaIncorrecto1();
+        var idiomaextra1 = this.turno.getIdiomaIncorrecto2();
+        var idiomaextra2 = this.turno.getIdiomaIncorrecto3();
         // Cálculo de la disposición de botones de los idiomas incorrectos
         do { this.turno.setRespuestaIncorrecta1(Math.floor(Math.random() * 4) + 1) }
         while (this.turno.getRespuestaIncorrecta1() == this.turno.getLugarRespuestaCorrecta());
