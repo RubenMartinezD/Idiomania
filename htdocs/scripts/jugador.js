@@ -61,25 +61,25 @@ class Player extends CuentaAtras {
         return this.nombre
     }
     definirPuntos() {
-        $("#puntuacion").html(this.getPuntos())
+        this.puntuacion.innerHTML = this.getPuntos()
     }
 
     respuestaCorrecta() {
-        this.setPuntos(this.getPuntos() + (this.getValorPuntosSEG() + this.getValorPuntosMILS() - (this.getSegundos() * 1000 + this.getMilisegundos)))
-        this.setSegundos(this.getSegundos() + 4)
+        this.setPuntos(this.puntos + parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
+        this.segundos = this.segundos + 2;
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
         this.definirPuntos()
-        this.setTurnos(this.getTurnos() + 1)
+        this.turno = this.turno + 1
     }
     respuestaIncorrecta() {
-        this.setPuntos(this.getPuntos() - (this.getValorPuntosSEG() + this.getValorPuntosMILS() - (this.getSegundos() * 1000 + this.getMilisegundos)))
+        this.setPuntos(this.puntos - parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (-this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
-        this.setSegundos(this.getSegundos() - 1)
+        this.segundos = this.segundos - 1;
         this.definirPuntos()
-        this.setTurnos(this.getTurnos() + 1)
+        this.turno = this.turno + 1
     }
 
     /**

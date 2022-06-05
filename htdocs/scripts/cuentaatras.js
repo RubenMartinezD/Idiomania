@@ -13,6 +13,7 @@ class CuentaAtras {
         this.segundos = 60
         this.intervalo = null
         this.bool_cuenta = true
+        this.display = document.getElementById("display_tiempo")
     }
     getSegundos() {
         return this.segundos
@@ -45,7 +46,7 @@ class CuentaAtras {
         this.bool_cuenta = true
         this.intervalo = setInterval(() => {
             if (this.bool_cuenta) {
-                console.log("contandoAtras", this.segundos, ':', this.milisegundos)
+                this.display.innerHTML = this.segundos + ":" + this.milisegundos
                 if (this.segundos == 0 && this.milisegundos == 0) {
                     console.log("fin");
                     this.bool_cuenta = false

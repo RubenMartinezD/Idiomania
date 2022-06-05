@@ -289,7 +289,13 @@ class Model {
         this.jugador.definirPuntos()
     }
     respuestaJugador(event) {
-        if (event.target.value == 'C') { console.log("Acertaste wey") } else if (event.target.value == 'I') { console.log("Fallaste pendejo") }
+        if (event.target.value == 'C') {
+            console.log("Acertaste wey")
+            this.jugador.respuestaCorrecta()
+        } else if (event.target.value == 'I') {
+            console.log("Fallaste pendejo")
+            this.jugador.respuestaIncorrecta()
+        }
     }
 
 }
