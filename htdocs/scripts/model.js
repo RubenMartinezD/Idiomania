@@ -292,9 +292,11 @@ class Model {
         if (event.target.value == 'C') {
             console.log("Acertaste wey")
             this.jugador.respuestaCorrecta()
+            this.randomizarFrase()
         } else if (event.target.value == 'I') {
             console.log("Fallaste pendejo")
             this.jugador.respuestaIncorrecta()
+            this.randomizarFrase()
         }
     }
 
