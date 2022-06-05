@@ -286,9 +286,18 @@ class Model {
         this.traducirFrase()
         this.recogerMasIdiomas()
         this.colocarBotones()
+        this.jugador.definirPuntos()
     }
     respuestaJugador(event) {
-        if (event.target.value == 'C') { console.log("Acertaste") } else if (event.target.value == 'I') { console.log("Fallaste") }
+        if (event.target.value == 'C') {
+            console.log("Acertaste wey")
+            this.jugador.respuestaCorrecta()
+            this.randomizarFrase()
+        } else if (event.target.value == 'I') {
+            console.log("Fallaste pendejo")
+            this.jugador.respuestaIncorrecta()
+            this.randomizarFrase()
+        }
     }
 
 }

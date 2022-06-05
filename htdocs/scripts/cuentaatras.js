@@ -8,15 +8,36 @@
  */
 class CuentaAtras {
     constructor(model) {
-            this.model = model
-            this.milisegundos = 0
-            this.segundos = 60
-            this.intervalo = null
-            this.bool_cuenta = true
-        }
-        /**
-         * Función que lleva a cabo la cuenta atrás mediante un intervalo
-         */
+        this.model = model
+        this.milisegundos = 0
+        this.segundos = 60
+        this.intervalo = null
+        this.bool_cuenta = true
+        this.display = document.getElementById("display_tiempo")
+    }
+    getSegundos() {
+        return this.segundos
+    }
+    setSegundos(segundos) {
+        this.segundos = segundos
+    }
+    getMilisegundos() {
+        return this.milisegundos
+    }
+    setMilisegundos(milisegundos) {
+        this.milisegundos = milisegundos
+    }
+    getBoolCuentaAtras() {
+        return this.bool_cuenta
+    }
+    setBoolCuentaAtras(bool_cuenta) {
+        this.bool_cuenta = bool_cuenta
+    }
+
+
+    /**
+     * Función que lleva a cabo la cuenta atrás mediante un intervalo
+     */
     contandoAtras() {
         clearInterval(this.intervalo);
         this.intervalo = null;
@@ -25,7 +46,7 @@ class CuentaAtras {
         this.bool_cuenta = true
         this.intervalo = setInterval(() => {
             if (this.bool_cuenta) {
-                console.log("contandoAtras", this.segundos, ':', this.milisegundos)
+                this.display.innerHTML = this.segundos + ":" + this.milisegundos
                 if (this.segundos == 0 && this.milisegundos == 0) {
                     console.log("fin");
                     this.bool_cuenta = false

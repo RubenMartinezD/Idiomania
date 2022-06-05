@@ -13,11 +13,12 @@ class Player extends CuentaAtras {
     constructor(milisegundos, segundos) {
         super(milisegundos, segundos);
         this.puntos = 0;
-        this.turno = 0;
+        this.turno = 1;
         this.nombre = 'cosa';
         this.var_puntosSEG = 60000;
         this.var_puntosMILS = 0;
         this.valor_puntos = 0;
+        this.puntuacion = document.getElementById("puntuacion");
 
     }
 
@@ -30,17 +31,59 @@ class Player extends CuentaAtras {
     getPuntos() {
         return this.puntos
     }
-
-    // obtenemos el turno
+    setPuntos(puntos) {
+            this.puntos = puntos
+        }
+        // obtenemos el turno
     getTurnos() {
         return this.turno
     }
-
-    // obtenemos el nombre proporcionado
+    setTurnos(turno) {
+        this.turnos = turno
+    }
+    setValorPuntosSEG(var_puntosSEG) {
+        this.var_puntosSEG = var_puntosSEG
+    }
+    getValorPuntosSEG() {
+        return this.var_puntosSEG
+    }
+    setValorPuntosMILS(var_puntosMILS) {
+        this.var_puntosMILS = var_puntosMILS
+    }
+    getValorPuntosMILS() {
+        return this.var_puntosMILS
+    }
+    setNombre() {
+            this.nombre = prompt("Escribe tu nombre de jugador");
+        }
+        // obtenemos el nombre proporcionado
     getNombre() {
         return this.nombre
     }
+    definirPuntos() {
+        this.puntuacion.innerHTML = this.getPuntos()
+    }
 
+    respuestaCorrecta() {
+        this.setPuntos(this.puntos + parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
+        this.segundos = this.segundos + 2;
+        this.setValorPuntosSEG(this.segundos);
+        this.setValorPuntosMILS(this.milisegundos);
+        this.definirPuntos()
+        this.turno = this.turno + 1
+    }
+    respuestaIncorrecta() {
+        this.setPuntos(this.puntos - parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (-this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
+        if (this.getPuntos() < 0) { this.setPuntos(0) }
+        this.setValorPuntosSEG(this.segundos);
+        this.setValorPuntosMILS(this.milisegundos);
+        this.segundos = this.segundos - 1;
+        this.definirPuntos()
+        this.turno = this.turno + 1
+    }
+
+    /**
+     * 
     respuestaCorrecta() {
         this.valor_puntos = this.valor_puntos + ((this.valor_puntosSEG + this.valor_puntosMILS) - (this.segundos * 1000 + this.milisegundos));
         this.segundos = this.segundos + 4;
@@ -53,4 +96,8 @@ class Player extends CuentaAtras {
         this.valor_puntosMILS = this.milisegundos
         this.segundos = this.segundos - 1;
     }
+     * 
+     * 
+     */
+
 }
