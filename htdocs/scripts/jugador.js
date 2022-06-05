@@ -1,7 +1,7 @@
 /**
  * Clase para construir el objeto jugador
  */
-class Player extends CuentaAtras {
+ class Player extends CuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
@@ -81,23 +81,4 @@ class Player extends CuentaAtras {
         this.definirPuntos()
         this.turno = this.turno + 1
     }
-
-    /**
-     * 
-    respuestaCorrecta() {
-        this.valor_puntos = this.valor_puntos + ((this.valor_puntosSEG + this.valor_puntosMILS) - (this.segundos * 1000 + this.milisegundos));
-        this.segundos = this.segundos + 4;
-        this.valor_puntosSEG = this.segundos;
-        this.valor_puntosMILS = this.milisegundos;
-    }
-    respuestaIncorrecta() {
-        this.valor_puntos = this.valor_puntos - (((this.valor_puntosSEG + this.valor_puntosMILS) - (this.segundos * 1000 + this.milisegundos)) / 20);
-        this.valor_puntosSEG = this.segundos
-        this.valor_puntosMILS = this.milisegundos
-        this.segundos = this.segundos - 1;
-    }
-     * 
-     * 
-     */
-
 }
