@@ -286,6 +286,7 @@ class Model {
         this.traducirFrase()
         this.recogerMasIdiomas()
         this.colocarBotones()
+        this.jugador.definirPuntos()
     }
     respuestaJugador(event) {
         if (event.target.value == 'C') { console.log("Acertaste wey") } else if (event.target.value == 'I') { console.log("Fallaste pendejo") }
