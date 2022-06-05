@@ -1,16 +1,9 @@
 class Model {
-    constructor() {
-        this.cuentita = new CuentaAtras()
-        this.lugar_respuesta_correcta = 0
-        this.turno = new Turno()
-    }
-
-
-
-    /**
-     * Método para obtener una frase al azar de la base de datos e insertarla en el html
-     * @returns boolean true
-     */
+    constructor() {}
+        /**
+         * Método para obtener una frase al azar de la base de datos e insertarla en el html
+         * @returns boolean true
+         */
     obtenerFrase() {
         /**
          * El id que se buscará en la base de datos, tabla frases
@@ -296,6 +289,7 @@ class Model {
 
     iniciarJuego() {
         this.jugador = new Player()
+        this.turno = new Turno()
         this.jugador.setNombre();
         this.jugador.contandoAtras();
         this.randomizarFrase();

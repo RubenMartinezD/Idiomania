@@ -48,7 +48,7 @@ class CuentaAtras {
             if (this.bool_cuenta) {
                 this.display.innerHTML = this.segundos + ":" + this.milisegundos
                 if (this.segundos == 0 && this.milisegundos == 0) {
-                    console.log("fin");
+                    alert("Fin del juego.");
                     this.bool_cuenta = false
                 }
                 if (this.milisegundos == 0) {

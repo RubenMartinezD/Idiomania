@@ -1,7 +1,7 @@
 /**
  * Clase para construir el objeto jugador
  */
- class Player extends CuentaAtras {
+class Player extends CuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
@@ -77,7 +77,7 @@
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
-        this.segundos = this.segundos - 1;
+        if (this.getSegundos() = 0) { this.setMilisegundos(0) } else { this.segundos = this.segundos - 1; }
         this.definirPuntos()
         this.turno = this.turno + 1
     }
