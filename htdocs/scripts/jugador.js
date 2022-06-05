@@ -1,7 +1,7 @@
 /**
  * Clase para construir el objeto jugador
  */
-class Player extends CuentaAtras {
+ class Player extends CuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
