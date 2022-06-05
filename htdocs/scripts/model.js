@@ -1,15 +1,9 @@
 class Model {
     constructor() {
         this.cuentita = new CuentaAtras()
-        this.jugador = new Player()
         this.lugar_respuesta_correcta = 0
         this.turno = new Turno()
     }
-
-    nuevoJugador() {
-        this.jugador.contandoAtras()
-    }
-
 
 
 
@@ -298,6 +292,13 @@ class Model {
             this.jugador.respuestaIncorrecta()
             this.randomizarFrase()
         }
+    }
+
+    iniciarJuego() {
+        this.jugador = new Player()
+        this.jugador.setNombre();
+        this.jugador.contandoAtras();
+        this.randomizarFrase();
     }
 
 }
