@@ -1,11 +1,11 @@
 /**
  * Clase para construir el objeto jugador
  */
- class Player extends CuentaAtras {
+class Player extends CuentaAtras {
     /**
      * Constructor de la clase
      * @param {integer} puntos - puntos del jugador
-     * @param {integer} turno - turno actual
+     * @param {integer} turnos - turno actual
      * @param {integer} milisegundos cuenta atrás en milisegundos del tiempo restante para finalizar el juego
      * @param {string} nombre - nombre del jugador
      * @param 
@@ -13,7 +13,7 @@
     constructor(milisegundos, segundos) {
         super(milisegundos, segundos);
         this.puntos = 0;
-        this.turno = 1;
+        this.turnos = 1;
         this.nombre = 'cosa';
         this.var_puntosSEG = 60000;
         this.var_puntosMILS = 0;
@@ -36,10 +36,10 @@
         }
         // obtenemos el turno
     getTurnos() {
-        return this.turno
+        return this.turnos
     }
-    setTurnos(turno) {
-        this.turnos = turno
+    setTurnos(turnos) {
+        this.turnos = turnos
     }
     setValorPuntosSEG(var_puntosSEG) {
         this.var_puntosSEG = var_puntosSEG
@@ -70,15 +70,17 @@
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
         this.definirPuntos()
-        this.turno = this.turno + 1
+        this.turnos = this.turnos + 1
+
+
     }
     respuestaIncorrecta() {
         this.setPuntos(this.puntos - parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (-this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
-        this.segundos = this.segundos - 1;
+        if (this.getSegundos() == 0) { this.setMilisegundos(0) } else { this.segundos = (this.segundos - 1) }
         this.definirPuntos()
-        this.turno = this.turno + 1
+        this.turnos = this.turnos + 1
     }
 }

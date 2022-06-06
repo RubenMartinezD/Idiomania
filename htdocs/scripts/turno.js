@@ -23,10 +23,21 @@ class Turno {
         this.boton2 = document.getElementById("Boton 2");
         this.boton3 = document.getElementById("Boton 3");
         this.boton4 = document.getElementById("Boton 4");
-        this.boton1.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        this.boton2.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        this.boton3.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        this.boton4.addEventListener("click", (event) => juego.model.respuestaJugador(event));
+        //  this.boton1.addEventListener("click", (event) => juego.model.respuestaJugador(event));
+        //  this.boton2.addEventListener("click", (event) => juego.model.respuestaJugador(event));
+        //  this.boton3.addEventListener("click", (event) => juego.model.respuestaJugador(event));
+        //  this.boton4.addEventListener("click", (event) => juego.model.respuestaJugador(event));
+
+        this.var_boton1 = (event) => { juego.model.respuestaJugador(event); };
+        this.var_boton2 = (event) => { juego.model.respuestaJugador(event); };
+        this.var_boton3 = (event) => { juego.model.respuestaJugador(event); };
+        this.var_boton4 = (event) => { juego.model.respuestaJugador(event); };
+        this.boton1.addEventListener('click', this.var_boton1, true);
+        this.boton2.addEventListener('click', this.var_boton2, true);
+        this.boton3.addEventListener('click', this.var_boton3, true);
+        this.boton4.addEventListener('click', this.var_boton4, true);
+
+
 
     }
 
@@ -75,7 +86,11 @@ class Turno {
 
     //Funciones de colocarBotones()
     getLugarRespuestaCorrecta() {
-            return this.lugar_respuesta_correcta
+        return this.lugar_respuesta_correcta
+    }
+
+    setNuevoLugarRespuestaCorrecta() {
+            this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
         }
         //Funciones para los lugares con las respuetas incorrectas
     setRespuestaIncorrecta1(respuesta_incorrecta1) {
@@ -113,5 +128,17 @@ class Turno {
     }
     getIdiomaIncorrecto3() {
         return this.nombre_incorrecto3
+    }
+
+    borrarEventos() {
+        //   this.boton1.addEventListener("click", (event) => null);
+        //   this.boton2.addEventListener("click", (event) => null);
+        //   this.boton3.addEventListener("click", (event) => null);
+        //   this.boton4.addEventListener("click", (event) => null);
+        this.boton1.removeEventListener('click', this.var_boton1, true);
+        this.boton2.removeEventListener('click', this.var_boton2, true);
+        this.boton3.removeEventListener('click', this.var_boton3, true);
+        this.boton4.removeEventListener('click', this.var_boton4, true);
+        alert("eventos borrados")
     }
 }
