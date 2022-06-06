@@ -294,5 +294,7 @@ class Model {
         this.jugador.contandoAtras();
         this.randomizarFrase();
     }
-
+    finJuego() {
+        this.turno.borrarEventos();
+    }
 }

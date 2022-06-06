@@ -7,8 +7,7 @@
  * @param {boolean} bool_cuenta - booleano que indica la orden de continuar o parar la cuenta atrás
  */
 class CuentaAtras {
-    constructor(model) {
-        this.model = model
+    constructor() {
         this.milisegundos = 0
         this.segundos = 60
         this.intervalo = null
@@ -42,21 +41,19 @@ class CuentaAtras {
         clearInterval(this.intervalo);
         this.intervalo = null;
         this.milisegundos = 0;
-        this.segundos = 60;
+        this.segundos = 10;
         this.bool_cuenta = true
         this.intervalo = setInterval(() => {
             if (this.bool_cuenta) {
                 this.display.innerHTML = this.segundos + ":" + this.milisegundos
                 if (this.segundos == 0 && this.milisegundos == 0) {
-                    alert("Fin del juego.");
+                    alert("Fin del juego. Tu puntuación es de " + this.puntos);
                     this.bool_cuenta = false
+                    juego.model.finJuego();
                 }
                 if (this.milisegundos == 0) {
                     this.milisegundos = 1000;
                     this.segundos--;
-                }
-                if (this.segundos == 0 && this.milisegundos == 0) {
-                    this.bool_cuenta = false
                 }
                 this.milisegundos -= 10;
             }
