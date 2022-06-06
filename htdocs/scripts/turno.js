@@ -86,7 +86,11 @@ class Turno {
 
     //Funciones de colocarBotones()
     getLugarRespuestaCorrecta() {
-            return this.lugar_respuesta_correcta
+        return this.lugar_respuesta_correcta
+    }
+
+    setNuevoLugarRespuestaCorrecta() {
+            this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
         }
         //Funciones para los lugares con las respuetas incorrectas
     setRespuestaIncorrecta1(respuesta_incorrecta1) {

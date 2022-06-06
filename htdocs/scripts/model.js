@@ -175,8 +175,9 @@ class Model {
     }
 
     colocarBotones() {
-
+        this.turno.setNuevoLugarRespuestaCorrecta();
         var idiomatraducido = this.turno.getNombreIdiomaCorrecto();
+
         /**
          * Localizaciones del html donde se guardan las variables con los idiomas incorrectos
          */
