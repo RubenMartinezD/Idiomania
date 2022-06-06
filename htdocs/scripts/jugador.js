@@ -19,6 +19,7 @@ class Player extends CuentaAtras {
         this.var_puntosMILS = 0;
         this.valor_puntos = 0;
         this.puntuacion = document.getElementById("puntuacion");
+        this.nombre_jugador = document.getElementById("nombre_jugador");
 
     }
 
@@ -55,6 +56,7 @@ class Player extends CuentaAtras {
     }
     setNombre() {
             this.nombre = prompt("Escribe tu nombre de jugador");
+            this.nombre_jugador.innerHTML = this.nombre
         }
         // obtenemos el nombre proporcionado
     getNombre() {

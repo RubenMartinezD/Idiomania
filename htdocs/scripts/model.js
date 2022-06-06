@@ -287,6 +287,32 @@ class Model {
             this.randomizarFrase()
         }
     }
+    insertarPuntuacion() {
+
+        var puntos = this.jugador.getPuntos()
+        console.log(puntos)
+        var usuario = this.jugador.getNombre()
+        console.log(usuario)
+        var respuesta_puntuacion = ""
+        var data = ""
+            /**
+             * Extraer con ajax la frase correspondiente e imprimirla en las etiquetas html ocultas idioma_traducido y codigo_idioma_correcto
+             */
+        $.ajax({
+            data: {
+                "nombre_usuario": usuario,
+                "puntuacion_final": puntos
+            },
+            url: 'php/insertarPuntuacion.php',
+            type: 'get',
+            async: false,
+            success: function(response) {}
+        });
+
+    }
+
+
+
 
     iniciarJuego() {
         this.jugador = new Player()
@@ -297,5 +323,6 @@ class Model {
     }
     finJuego() {
         this.turno.borrarEventos();
+        this.insertarPuntuacion();
     }
 }
