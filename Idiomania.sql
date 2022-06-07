@@ -7,7 +7,7 @@ contenido VARCHAR(200) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS puntuaciones (
 id_partida INT AUTO_INCREMENT PRIMARY KEY,
-nombre_usuario VARCHAR(20),
+nombre_usuario VARCHAR(50),
 puntuacion_final INT
 );
 CREATE TABLE IF NOT EXISTS idiomas (

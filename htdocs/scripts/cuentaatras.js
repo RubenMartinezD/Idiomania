@@ -1,19 +1,35 @@
 /**
  * Objeto que instancia una cuenta atrás
- * @param model - el model
- * @param {integer} milisegundos - milisegundos de la cuenta atrás, en múltiplos de 10
- * @param {integer} segundos - segundos de la cuenta atrás, empezando en 60
- * @param {?} intervalo - variable con el intervalo necesario para la cuenta atrás
- * @param {boolean} bool_cuenta - booleano que indica la orden de continuar o parar la cuenta atrás
  */
 class CuentaAtras {
     constructor() {
-        this.milisegundos = 0
-        this.segundos = 60
-        this.intervalo = null
-        this.bool_cuenta = true
+        /**
+         * milisegundos de la cuenta atrás, en múltiplos de 10
+         * @type {integer} 
+         */
+        this.milisegundos = 0;
+        /**
+         * segundos de la cuenta atrás, empezando en 60
+         * @type {integer}
+         */
+        this.segundos = 60;
+        /**
+         * variable con el intervalo necesario para la cuenta atrás
+         * @type {interval}
+         */
+        this.intervalo = null;
+        /**
+         * Booleano que termina el juego si es false
+         * @type {interval}
+         */
+        this.bool_cuenta = true;
+        /**
+         * Display del HTML que muestra al usuario el tiempo de juego restante
+         */
         this.display = document.getElementById("display_tiempo")
     }
+
+    //sets y gets
     getSegundos() {
         return this.segundos
     }

@@ -1,33 +1,55 @@
+/**
+ * clase para construir un objeto Turno al principio del juego
+ */
 class Turno {
     constructor() {
-        this.frase = ""
-        this.n_idioma_correcto = ""
-        this.c_idioma_correcto = ""
-        this.id_idioma_correcto = ""
-        this.array_idiomas_incorrectos = []
-        this.frase_traducida = ""
-            /**
-             * Definición del slot del botón donde estará la respuesta correcta
-             */
+        /**
+         * Frase correspondiente al turno actual, sin traducir
+         * @type {string}
+         */
+        this.frase = "";
+        /**
+         * Nombre correspondiente al idioma correcto en este turno
+         * @type {string}
+         */
+        this.n_idioma_correcto = "";
+        /**
+         * Código de API correspondiente al idioma correcto en este turno
+         * @type {string}
+         */
+        this.c_idioma_correcto = "";
+        /**
+         * Número ID correspondiente al idioma correcto en este turno
+         * @type {integer}
+         */
+        this.id_idioma_correcto = "";
+        /**
+         * Array que contendrá los ID correspondientes a los idiomas incorrectos en este turno
+         * @type {array}
+         */
+        this.array_idiomas_incorrectos = [];
+        /**
+         * Frase correspondiente al turno actual ya traducida
+         * @type {string}
+         */
+        this.frase_traducida = "";
+        /**
+         * Definición del slot del botón donde estará la respuesta correcta
+         */
         this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
-        this.respuesta_incorrecta1 = 0
-        this.respuesta_incorrecta2 = 0
-        this.respuesta_incorrecta3 = 0
-        this.nombre_incorrecto1 = ""
-        this.nombre_incorrecto2 = ""
-        this.nombre_incorrecto3 = ""
-            /**
-             * Botones del html
-             */
+        this.respuesta_incorrecta1 = 0;
+        this.respuesta_incorrecta2 = 0;
+        this.respuesta_incorrecta3 = 0;
+        this.nombre_incorrecto1 = "";
+        this.nombre_incorrecto2 = "";
+        this.nombre_incorrecto3 = "";
+        /**
+         * Botones del html
+         */
         this.boton1 = document.getElementById("Boton 1");
         this.boton2 = document.getElementById("Boton 2");
         this.boton3 = document.getElementById("Boton 3");
         this.boton4 = document.getElementById("Boton 4");
-        //  this.boton1.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        //  this.boton2.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        //  this.boton3.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-        //  this.boton4.addEventListener("click", (event) => juego.model.respuestaJugador(event));
-
         this.var_boton1 = (event) => { juego.model.respuestaJugador(event); };
         this.var_boton2 = (event) => { juego.model.respuestaJugador(event); };
         this.var_boton3 = (event) => { juego.model.respuestaJugador(event); };
@@ -90,9 +112,10 @@ class Turno {
     }
 
     setNuevoLugarRespuestaCorrecta() {
-            this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
-        }
-        //Funciones para los lugares con las respuetas incorrectas
+        this.lugar_respuesta_correcta = Math.floor(Math.random() * 4) + 1;
+    }
+
+    //Funciones para los lugares con las respuetas incorrectas
     setRespuestaIncorrecta1(respuesta_incorrecta1) {
         this.respuesta_incorrecta1 = respuesta_incorrecta1
     }
@@ -131,10 +154,6 @@ class Turno {
     }
 
     borrarEventos() {
-        //   this.boton1.addEventListener("click", (event) => null);
-        //   this.boton2.addEventListener("click", (event) => null);
-        //   this.boton3.addEventListener("click", (event) => null);
-        //   this.boton4.addEventListener("click", (event) => null);
         this.boton1.removeEventListener('click', this.var_boton1, true);
         this.boton2.removeEventListener('click', this.var_boton2, true);
         this.boton3.removeEventListener('click', this.var_boton3, true);
