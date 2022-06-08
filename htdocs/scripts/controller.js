@@ -9,7 +9,7 @@ class Controller {
         this.model = model
         this.view = view
         this.view.botonInicio(this.model.iniciarJuego)
-        this.view.botonRecords(this.model.mostrarRecords)
+        this.view.botonPuntuaciones(this.model.mostrarPuntuaciones)
     }
 
 }

@@ -1,23 +1,25 @@
 class View {
     // añadimos un botón en tiempo de ejecución
     constructor() {
-        this.miBoton
+        this.miBotonInicio
         this.crearBotonInicio()
+        this.miBotonPuntuaciones
+        this.crearBotonPuntuaciones()
         this.div_titulo = document.getElementById("pantalla_titulo")
         this.div_juego = document.getElementById("pantalla_juego")
         this.div_datos = document.getElementById("pantalla_datos")
         this.div_instrucciones = document.getElementById("instrucciones")
+        this.div_puntuaciones = document.getElementById("puntuaciones")
     }
 
     /**
-     *  creamos un boton y lo añadimos al contenedor
+     *  Función para crear un botón inicio que se incrustará en el html
      */
-
     crearBotonInicio() {
-        this.miBoton = document.createElement('button')
-        this.miBoton.id = "comienzo_juego"
-        this.miBoton.innerHTML = "<b>Iniciar juego</b>"
-        document.getElementById("pantalla_titulo").appendChild(this.miBoton)
+        this.miBotonInicio = document.createElement('button')
+        this.miBotonInicio.id = "comienzo_juego"
+        this.miBotonInicio.innerHTML = "<b>Iniciar juego</b>"
+        document.getElementById("pantalla_titulo").appendChild(this.miBotonInicio)
     }
 
     /**
@@ -28,7 +30,7 @@ class View {
      * @param {funcion} handle función del Model que devuelve la frase
      */
     botonInicio(handle) {
-        this.miBoton.addEventListener(
+        this.miBotonInicio.addEventListener(
             'click',
             function(event) {
                 // el listener utiliza displayFrase para meter el contenido en el HTML
@@ -40,7 +42,30 @@ class View {
                 this.div_juego.hidden = false;
                 this.div_titulo.hidden = true;
                 this.div_instrucciones.hidden = true;
+                this.div_puntuaciones.hidden = true;
+
 
             }.bind(this), false)
+    }
+
+    crearBotonPuntuaciones() {
+        this.miBotonPuntuaciones = document.createElement('button')
+        this.miBotonPuntuaciones.id = "boton_puntuaciones"
+        this.miBotonPuntuaciones.innerHTML = "<b>Ver records</b>"
+        document.getElementById("puntuaciones").appendChild(this.miBotonPuntuaciones)
+    }
+
+    botonPuntuaciones(handle) {
+        this.miBotonPuntuaciones.addEventListener(
+            'click',
+            function(event) {
+                // el listener utiliza displayFrase para meter el contenido en el HTML
+                // como parámetro recibe lo que devuelve la función handle()
+                // handle es la función obtnerFrase del Model
+                // devuelve una string, la frase
+                this.miBotonPuntuaciones.hidden = true;
+                handle()
+            }.bind(this), false)
+
     }
 }
