@@ -86,7 +86,7 @@ class Player extends CuentaAtras {
     }
     setNombre() {
         this.nombre = prompt("Escribe tu nombre de jugador");
-        this.nombre_jugador.innerHTML = this.nombre
+        this.nombre_jugador.innerHTML = "Jugador: " + this.nombre
     }
 
     // obtenemos el nombre proporcionado
@@ -94,7 +94,7 @@ class Player extends CuentaAtras {
         return this.nombre
     }
     definirPuntos() {
-        this.puntuacion.innerHTML = this.getPuntos()
+        this.puntuacion.innerHTML = "Puntos: " + this.getPuntos()
     }
 
     /**
@@ -113,7 +113,7 @@ class Player extends CuentaAtras {
      * Función que se ejecuta en cuanto el usuario escoge una respuesta incorrecta
      */
     respuestaIncorrecta() {
-        this.setPuntos(this.puntos - parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (-this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 1500000))
+        this.setPuntos(this.puntos - parseInt(((this.getSegundos() * 1000 + this.getMilisegundos()) - ((this.getValorPuntosSEG() + this.getValorPuntosMILS()))) / 40))
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);

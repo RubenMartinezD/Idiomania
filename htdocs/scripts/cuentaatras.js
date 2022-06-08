@@ -57,11 +57,11 @@ class CuentaAtras {
         clearInterval(this.intervalo);
         this.intervalo = null;
         this.milisegundos = 0;
-        this.segundos = 10;
+        this.segundos = 60;
         this.bool_cuenta = true
         this.intervalo = setInterval(() => {
             if (this.bool_cuenta) {
-                this.display.innerHTML = this.segundos + ":" + this.milisegundos
+                this.display.innerHTML = "Tiempo: " + this.segundos
                 if (this.segundos == 0 && this.milisegundos == 0) {
                     alert("Fin del juego. Tu puntuación es de " + this.puntos);
                     this.bool_cuenta = false

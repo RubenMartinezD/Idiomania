@@ -105,7 +105,6 @@ class Turno {
         return this.array_idiomas_incorrectos[i]
     }
 
-
     //Funciones de colocarBotones()
     getLugarRespuestaCorrecta() {
         return this.lugar_respuesta_correcta
@@ -153,11 +152,13 @@ class Turno {
         return this.nombre_incorrecto3
     }
 
+    /**
+     * Función que borra los eventos correspondientes a los botones de opción
+     */
     borrarEventos() {
         this.boton1.removeEventListener('click', this.var_boton1, true);
         this.boton2.removeEventListener('click', this.var_boton2, true);
         this.boton3.removeEventListener('click', this.var_boton3, true);
         this.boton4.removeEventListener('click', this.var_boton4, true);
-        alert("eventos borrados")
     }
 }
