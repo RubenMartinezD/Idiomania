@@ -344,7 +344,7 @@ class Model {
      * Método que extrae y muestra las puntuaciones de la base de datos en un array sencillo
      * @returns {array} array_frase -  Array con los datos de puntuaciones extraidos
      */
-    mostrarPuntuaciones() {
+    mostrarPuntuaciones = () => {
         /**
          * Tabla donde se guarda el select parseado
          * @type {array}
@@ -375,7 +375,7 @@ class Model {
     /**
      * Función pack que se ejecuta al comenzar el juego
      */
-    iniciarJuego() {
+    iniciarJuego = () => {
         /**
          * Objeto del jugador que se define al principio de la partid
          * @type {object} 

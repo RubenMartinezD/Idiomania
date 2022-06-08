@@ -5,9 +5,12 @@
  * @field model encargado de los datos
  */
 class Controller {
-    constructor(model) {
+    constructor(model, view) {
         this.model = model
+        this.view = view
+        this.view.botonInicio(this.model.iniciarJuego)
+        this.view.botonRecords(this.model.mostrarRecords)
     }
 
 }
-const juego = new Controller(new Model)
+const juego = new Controller(new Model, new View)
