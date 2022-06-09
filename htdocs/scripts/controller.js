@@ -3,6 +3,7 @@
  *  Enlaza el model con el html
  * 
  * @field model encargado de los datos
+ * @field vista encargada de los botones de inicio
  */
 class Controller {
     constructor(model, view) {

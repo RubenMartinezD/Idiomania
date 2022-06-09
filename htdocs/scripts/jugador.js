@@ -101,8 +101,11 @@ class Player extends CuentaAtras {
      * Función que se ejecuta en cuanto el usuario escoge una respuesta correcta
      */
     respuestaCorrecta() {
-        this.setPuntos(this.puntos + parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000))
+        //cálculo de los puntos
+        this.setPuntos(this.puntos + parseInt((this.getSegundos() * 1000 + this.getMilisegundos()) - (this.getValorPuntosSEG() + this.getValorPuntosMILS()) / 750000));
+        //sumar segundos al jugador
         this.segundos = this.segundos + 2;
+        //setear valores para el cálculo de puntos del siguiente turno
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
         this.definirPuntos()
@@ -113,10 +116,12 @@ class Player extends CuentaAtras {
      * Función que se ejecuta en cuanto el usuario escoge una respuesta incorrecta
      */
     respuestaIncorrecta() {
-        this.setPuntos(this.puntos - parseInt(((this.getSegundos() * 1000 + this.getMilisegundos()) - ((this.getValorPuntosSEG() + this.getValorPuntosMILS()))) / 40))
+        this.setPuntos(this.puntos - parseInt(((this.getSegundos() * 1000 + this.getMilisegundos()) - ((this.getValorPuntosSEG() + this.getValorPuntosMILS()))) / 40));
+        //evitar puntos negativos
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);
         this.setValorPuntosMILS(this.milisegundos);
+        //if para cuando el usuario falla cerca de 0 segundos, para que el valor no haga un underflow y vuelva loco al juego
         if (this.getSegundos() == 0) { this.setMilisegundos(0) } else { this.segundos = (this.segundos - 1) }
         this.definirPuntos()
         this.turnos = this.turnos + 1

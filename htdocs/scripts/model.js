@@ -369,6 +369,10 @@ class Model {
                 }
             }
         });
+        /**
+         * Tabla donde se guardan los datos del array simplificado en formato html
+         * @type {string}
+         */
         var tabla_records = array_frase[0] + "<br>" + array_frase[1] + "<br>" + array_frase[2] + "<br>" + array_frase[3] + "<br>" + array_frase[4] + "<br>" + array_frase[5] + "<br>" + array_frase[6] + "<br>" + array_frase[7] + "<br>" + array_frase[8] + "<br>" + array_frase[9] + "<br>" + array_frase[10]
         document.getElementById("tabla_records").innerHTML = tabla_records
         return array_frase

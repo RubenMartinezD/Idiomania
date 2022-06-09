@@ -1,3 +1,7 @@
+/**
+ * Clase Vista
+ * Encargada de mostrar los botones de inicio
+ */
 class View {
     // añadimos un botón en tiempo de ejecución
     constructor() {
@@ -25,18 +29,13 @@ class View {
     /**
      * Método que llamaremos desde el controller
      * Configura el listener del boton con la función del Model
-     * Importante el uso de la funcion bind(), de esta manera podemos utilizar 'this'
-     * Explicación: https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener
-     * @param {funcion} handle función del Model que devuelve la frase
-     */
+     * @param {funcion} handle función del Model que ejecuta iniciarJuego()    
+     *  */
     botonInicio(handle) {
         this.miBotonInicio.addEventListener(
             'click',
             function(event) {
-                // el listener utiliza displayFrase para meter el contenido en el HTML
-                // como parámetro recibe lo que devuelve la función handle()
-                // handle es la función obtnerFrase del Model
-                // devuelve una string, la frase
+                //ocultar los div del html de la pantalla de título
                 handle()
                 this.div_datos.hidden = false;
                 this.div_juego.hidden = false;
@@ -48,6 +47,9 @@ class View {
             }.bind(this), false)
     }
 
+    /**
+     *  Función para crear un botón ver récords que se incrustará en el html
+     */
     crearBotonPuntuaciones() {
         this.miBotonPuntuaciones = document.createElement('button')
         this.miBotonPuntuaciones.id = "boton_puntuaciones"
@@ -55,14 +57,16 @@ class View {
         document.getElementById("puntuaciones").appendChild(this.miBotonPuntuaciones)
     }
 
+    /**
+     * Método que llamaremos desde el controller
+     * Configura el listener del boton con la función del Model
+     * @param {funcion} handle función del Model que devuelve la frase
+     */
     botonPuntuaciones(handle) {
         this.miBotonPuntuaciones.addEventListener(
             'click',
             function(event) {
-                // el listener utiliza displayFrase para meter el contenido en el HTML
-                // como parámetro recibe lo que devuelve la función handle()
-                // handle es la función obtnerFrase del Model
-                // devuelve una string, la frase
+                //ocultar el botón de records al pulsarlo
                 this.miBotonPuntuaciones.hidden = true;
                 handle()
             }.bind(this), false)
