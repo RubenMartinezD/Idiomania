@@ -2,7 +2,7 @@
  * Clase Vista
  * Encargada de mostrar los botones de inicio
  */
-class View {
+ class View {
     // añadimos un botón en tiempo de ejecución
     constructor() {
         // Botón que el usuario pulsará para empezar la partida
