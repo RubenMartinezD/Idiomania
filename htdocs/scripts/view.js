@@ -2,13 +2,16 @@
  * Clase Vista
  * Encargada de mostrar los botones de inicio
  */
-class View {
+ class View {
     // añadimos un botón en tiempo de ejecución
     constructor() {
+        // Botón que el usuario pulsará para empezar la partida
         this.miBotonInicio
-        this.crearBotonInicio()
+        this.crearBotonInicio();
+        // Botón que el usuario pulsará para ver las puntuaciones
         this.miBotonPuntuaciones
-        this.crearBotonPuntuaciones()
+        this.crearBotonPuntuaciones();
+        //divs correspondientes a los elementos del juego
         this.div_titulo = document.getElementById("pantalla_titulo")
         this.div_juego = document.getElementById("pantalla_juego")
         this.div_datos = document.getElementById("pantalla_datos")
@@ -63,6 +66,7 @@ class View {
      * @param {funcion} handle función del Model que devuelve la frase
      */
     botonPuntuaciones(handle) {
+        //cuando el usuario hace click en el botón de mostrar puntuaciones
         this.miBotonPuntuaciones.addEventListener(
             'click',
             function(event) {
@@ -72,4 +76,23 @@ class View {
             }.bind(this), false)
 
     }
+
+    /**
+     * Función para ocultar y mostrar los div del html pertinentes cuando se acabe el juego
+     * Parámetros correspondientes a cada <div>:
+     * @param {html} datos 
+     * @param {html} juego 
+     * @param {html} titulo 
+     * @param {html} instrucciones 
+     * @param {html} puntuaciones 
+     */
+    ocultardiv(datos, djuego, titulo, instrucciones, puntuaciones) {
+        datos.hidden = true;
+        djuego.hidden = true;
+        titulo.hidden = false;
+        instrucciones.hidden = false;
+        puntuaciones.hidden = false;
+    }
+
+
 }
