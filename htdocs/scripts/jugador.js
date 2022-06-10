@@ -26,17 +26,17 @@ class Player extends CuentaAtras {
          */
         this.nombre = 'cosa';
         /**
-         * Variable usada parea el cálculo de punros
+         * Variable usada parea el cálculo de puntos
          * @type {integer} 
          */
-        this.var_puntosSEG = 60000;
+        this.var_puntosSEG = 120000;
         /**
-         * Variable usada parea el cálculo de punros
+         * Variable usada parea el cálculo de puntos
          * @type {integer} 
          */
         this.var_puntosMILS = 0;
         /**
-         * Variable usada parea el cálculo de punros
+         * Variable usada parea el cálculo de puntos
          * @type {integer} 
          */
         this.valor_puntos = 0;
@@ -116,7 +116,7 @@ class Player extends CuentaAtras {
      * Función que se ejecuta en cuanto el usuario escoge una respuesta incorrecta
      */
     respuestaIncorrecta() {
-        this.setPuntos(this.puntos - parseInt(((this.getSegundos() * 1000 + this.getMilisegundos()) - ((this.getValorPuntosSEG() + this.getValorPuntosMILS()))) / 40));
+        this.setPuntos(this.puntos - parseInt(((this.getSegundos() * 1000 + this.getMilisegundos()) - ((this.getValorPuntosSEG() + this.getValorPuntosMILS()))) / 4));
         //evitar puntos negativos
         if (this.getPuntos() < 0) { this.setPuntos(0) }
         this.setValorPuntosSEG(this.segundos);

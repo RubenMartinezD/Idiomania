@@ -25,6 +25,7 @@ class Model {
             success: function(response) {
                 //El JSON que contendrá la frase (respuesta[i].contenido)
                 respuesta = JSON.parse(response);
+                console.log(respuesta)
             }
         });
         this.turno.setFrase(respuesta[0].contenido);
@@ -54,6 +55,7 @@ class Model {
             async: false,
             success: function(response) {
                 respuesta_idioma = JSON.parse(response);
+                console.log(respuesta_idioma)
 
             }
         });
@@ -118,16 +120,30 @@ class Model {
          * Contiene el ID del idioma correcto, el cual no debe repetirse.
          * @type {integer}
          */
-        var idioma_prohibido = this.turno.getCodigoIdiomaCorrecto();
+        var idioma_prohibido = this.turno.getIdIdiomaCorrecto();
         console.log("Idioma recogido:" + idioma_prohibido);
         /**
          * Array para introducir los ID correspondientes a idiomas distintos al correcto
          * @type {array}
          */
         var array_idiomas_incorrectos = [];
+
+        do {
+            array_idiomas_incorrectos[0] = Math.floor(Math.random() * 25) + 1;
+            console.log("idioma incorrecto 0:" + array_idiomas_incorrectos[0])
+        }
+        while (array_idiomas_incorrectos[0] == idioma_prohibido)
+        do {
+            array_idiomas_incorrectos[1] = Math.floor(Math.random() * 25) + 1;
+            console.log("idioma incorrecto 1:" + array_idiomas_incorrectos[1])
+        }
+        while (array_idiomas_incorrectos[1] == idioma_prohibido || array_idiomas_incorrectos[1] == array_idiomas_incorrectos[0])
+        do {
+            array_idiomas_incorrectos[2] = Math.floor(Math.random() * 25) + 1;
+            console.log("idioma incorrecto 2:" + array_idiomas_incorrectos[2])
+        }
+        while (array_idiomas_incorrectos[2] == idioma_prohibido || array_idiomas_incorrectos[2] == array_idiomas_incorrectos[0] || array_idiomas_incorrectos[2] == array_idiomas_incorrectos[1])
         for (let i = 0; i < 3; i++) {
-            do { array_idiomas_incorrectos[i] = Math.floor(Math.random() * 25) + 1; }
-            while (array_idiomas_incorrectos[i] == idioma_prohibido)
             //se introduce el número de ID del idioma y el slot donde irá (0,1,2)
             this.obtenerIdiomasIncorrectos(array_idiomas_incorrectos[i], i);
         }
@@ -401,6 +417,8 @@ class Model {
      * Función pack que se ejecuta al acabar el juego
      */
     finJuego() {
+        //Cambio de última hora. timeout creado para mostrar de nuevo el menú de título. Se elimina el sumado y restado de segundos en el cálculo por este motivo
+        juego.view.ocultardiv(juego.view.div_datos, juego.view.div_juego, juego.view.div_titulo, juego.view.div_instrucciones, juego.view.div_puntuaciones)
         this.turno.borrarEventos();
         this.insertarPuntuacion();
     };
